@@ -1,0 +1,8 @@
+#!/bin/dash
+
+while :; do
+    TIME=$(date '+%A - %d %B - %R')
+    xsetroot -name '  '"$TIME"'  '
+
+    sleep 60s
+done 

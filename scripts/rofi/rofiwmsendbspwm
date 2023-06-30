@@ -1,0 +1,54 @@
+#!/bin/sh
+
+menu(){
+    printf "1.  one\n"
+    printf "2.  two\n"
+    printf "3.  three\n"
+    printf "4.  four\n"
+    printf "5.  five\n"
+    printf "6.  six\n"
+    printf "7.  seven\n"
+    printf "8.  eight\n"
+    printf "9.  discord\n"
+    printf "10. chat/steam\n"
+}
+
+choice=$(menu | rofi -matching fuzzy -dmenu -i -p "🐦send" -selected-row 1 | cut -d. -f1)
+
+case $choice in
+    1)
+        bspc node -d ^1
+        ;;
+    2)
+        bspc node -d ^2
+        ;;
+    3)
+        bspc node -d ^3
+        ;;
+    4)
+        bspc node -d ^4
+        ;;
+    5)
+        bspc node -d ^5
+        ;;
+    6)
+        bspc node -d ^6
+        ;;
+    7)
+        bspc node -d ^7
+        ;;
+    8)
+        bspc node -d ^8
+        ;;
+    9)
+        bspc node -d ^9
+        ;;
+    10)
+        bspc node -d ^10
+        ;;
+
+    esac
+
+
+
+

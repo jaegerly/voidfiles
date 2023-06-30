@@ -1,0 +1,76 @@
+#!/bin/dash
+
+term=kitty
+editor=nvim
+
+menu(){
+    printf "bm bookmarks\n"
+    printf "sx sxhkdrc\n"
+    printf "dk dkrc\n"
+    printf "as autostart\n"
+    printf "kt kitty\n"
+    printf "zs zshrc\n"
+    printf "br bashrc\n"
+    printf "lf lfrc\n"
+    printf "cf configopener\n"
+    printf "al alias\n"
+    printf "bs browserstart\n"
+    printf "zp zprofile\n"
+    printf "bp bashprofile\n"
+    printf "nb newsboaturl\n"
+}
+
+choice="$(menu | fzf --border=rounded --margin=1% --color=dark --color='pointer:12,bg+:8' --height 100% --reverse --no-scrollbar --header='configs ' --info=hidden --header-first --prompt " " | cut -d' ' -f1)"
+
+case "$choice" in
+    bm)
+        choice="$HOME/.local/bookmarks"
+        ;;
+    sx)
+        choice="$HOME/.config/dk/sxhkdrc"
+        ;;
+    dk)
+        choice="$HOME/.config/dk/dkrc"
+        ;;
+    as)
+        choice="$HOME/.local/bin/scripts/autostart"
+        ;;
+    kt)
+        choice="$HOME/.config/kitty/kitty.conf"
+        ;;
+    zs)
+        choice="$HOME/.zshrc"
+        ;;
+    br)
+        choice="$HOME/.bashrc"
+        ;;
+    lf)
+        choice="$HOME/.config/lf/lfrc"
+        ;;
+    cf)
+        choice="$HOME/.local/bin/scripts/fzfconfigopener"
+        ;;
+    al)
+        choice="$HOME/.config/shell/alias"
+        ;;
+    bs)
+        choice="$HOME/.local/bin/scripts/fzfbrowserstart"
+        ;;
+    zp)
+        choice="$HOME/.config/shell/profile"
+        ;;
+    bp)
+        choice="$HOME/.bash_profile"
+        ;;
+    nb)
+        choice="$HOME/.config/newsboat/urls"
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+devour $term -e $editor "$choice"
+
+
+
+

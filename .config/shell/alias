@@ -1,0 +1,62 @@
+#!/bin/bash
+## ALIAS
+# system
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias rm='rm -vI'
+alias cat='bat'
+alias cpwd='pwd | xclip -selection c'
+alias copylast='fc -ln -1 | xclip -selection c'
+
+#navigation
+alias ls='exa --icons -a --group-directories-first'
+alias ll='exa --icons -la --group-directories-first --header --git'
+# alias ll='ls -lav --ignore=..'   # show long listing of all except ".."
+# alias l='ls -lav --ignore=.?*'   # show long listing but no hidden dotfiles except "."
+alias pv='cd ..;pwd'
+alias c='clear'
+alias h='history'
+alias q='cd ;clear'
+alias locate='plocate'
+alias scripts='cd ~/.local/share/scripts'
+
+
+# trash
+alias tr='trash'
+alias trr='trash-restore'
+alias tren='trash-empty'
+alias tre='trash-empty 15'
+alias trls='trash-list' 
+
+# programs
+alias v='$EDITOR'
+alias e='$EDITOR'
+alias lf='lfcd'
+alias copytext='xclip -sel c <'
+alias feed='newsboat'
+alias feedu='newsboat -x reload'
+alias m='ncmpcpp'
+
+## random ##
+alias ip='ip -color=auto'
+alias grep='grep --color=auto'
+alias icat='kitty +kitten icat'
+alias redshift='redshift -PO'
+
+## yt dl
+alias ytm="yt-dlp -x --audio-format mp3 --add-metadata -o '%(title)s.%(ext)s'"
+alias ytmp="yt-dlp -x --audio-format mp3 -i --add-metadata -o '%(title)s.%(ext)s'"
+alias ytdl="yt-dlp -f bestaudio/best -o '%(title)s.%(ext)s'"
+
+# rsync dots
+alias syncconfig="rsync -urvP --exclude 'QtProject.conf' --exclude 'user-dirs.dirs' --exclude 'user-dirs.locale' --exclude 'yay' --exclude 'tox' --exclude 'pulse' --exclude 'menus' --exclude 'keepassxc' --exclude 'gtk-3.0' --exclude 'glib-2.0' --exclude 'dconf' --exclude 'cef_user_data' --exclude 'mpv/watch_later' ~/.config ~/repos/jgrvoid2"
+alias syncscripts="rsync -urvP ~/.local/bin/scripts ~/repos/jgrvoid2"
+alias syncdots="rsync -urvP ~/.bash_profile ~/.bashrc ~/.zprofile ~/.zshrc ~/repos/jgrvoid2"
+alias updatepkglist=""
+
+# git
+alias gaddu='git add -u'
+alias gadda='git add .'
+alias gs='git status'
+alias gc='git commit -m'
+alias gp='git push'

@@ -1,0 +1,38 @@
+#!/bin/sh
+
+menu(){
+    printf "lock\n"
+    printf "sleep\n"
+    printf "shutdown\n"
+    printf "reboot\n"
+    printf "exitx\n"
+}
+
+main(){
+    choice="$(menu | rofi -matching fuzzy -dmenu -i -p "󰚩 system")"
+
+    case "$choice" in
+        lock)
+            betterlockscreen -q -l blur
+            ;;
+        sleep)
+            systemctl suspend
+            ;;
+        shutdown)
+            shutdown now
+            ;;
+        reboot)
+            reboot
+            ;;
+        exitx)
+            loginctl terminate-session ${XDG_SESSION_ID-}
+            ;;
+        *)
+            exit 1
+            ;;
+    esac
+}
+
+main
+
+

@@ -1,0 +1,18 @@
+#!/bin/sh
+
+handle_default() {
+    if [ ! -z "$1" ]; then
+         "$1" "$url"
+    elif [ ! -z "$BROWSER" ]; then
+         "$BROWSER" "$url"
+    fi
+}
+
+url=$(sort ~/.local/bookmarks | awk '{gsub(/#.*/, ""); print}' | dmenu -f -i -p " bookmarks" | awk '{system("grep "$1" ~/.local/bookmarks")}' | sed 's/.*#//')
+
+if [ $url ]; then
+    case "$1" in
+        xdo) xdotool type "$url" ;;
+        *) handle_default ;;
+    esac
+fi

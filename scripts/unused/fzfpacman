@@ -1,0 +1,12 @@
+#!/bin/dash
+
+ps(){
+    choice="$(pacman -Ssq | fzf -m --preview="pacman -Si {}" --preview-window=:hidden --bind=space:toggle-preview --border=rounded --margin=1% --color=dark --color='pointer:12,bg+:8' --height 100% --reverse --no-scrollbar --header='pacman download ' --info=inline-right --header-first --prompt " ")"
+
+    if [ $choice ]
+    then
+         sudo pacman -S $choice
+     else
+         exit
+    fi
+}

@@ -1,0 +1,52 @@
+#: Jgr kitty conf
+
+#: binds
+kitty_mod ctrl+shift
+action_alias launch_window launch --type=window --cwd=current
+map kitty_mod+d launch_window
+map kitty_mod+s next_window
+map kitty_mod+a previous_window
+map kitty_mod+t detach_window
+map kitty_mod+l next_layout
+map kitty_mod+k change_font_size all +2.0
+map kitty_mod+j change_font_size all -2.0
+map kitty_mod+h change_font_size all 0
+map shift+insert paste_from_selection
+
+#: fonts
+#font_family	FiraCode Nerd Font
+ font_family	JetBrainsMono Nerd Font
+# font_family	Terminus Nerd Font
+# font_family	Hack Nerd Font
+# font_family	Victor Mono Nerd Font
+# font_family	Cascadia Code Nerd Font
+# font_family	Meslo Nerd Font
+
+
+font_size 22
+
+
+#: settings
+disable_ligatures never
+update_check_interval 0
+window_margin_width 2 6 2
+window_padding_width 2
+window_border_width 3pt
+scrollback_lines 5000
+background_opacity 0.95 
+cursor_shape block
+shell_integration no-cursor
+cursor_blink_interval 0
+wheel_scroll_multiplier 5.0
+url_style curly
+detect_urls yes
+copy_on_select yes
+enable_audio_bell no
+editor .
+shell zsh
+linux_display_server auto
+
+# BEGIN_KITTY_THEME
+# Catppuccin Kitty Diff Macchiato
+include current-theme.conf
+# END_KITTY_THEME

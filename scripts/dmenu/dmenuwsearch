@@ -1,0 +1,29 @@
+#!/bin/bash
+
+brave="https://search.brave.com/search?q="
+archwiki="https://wiki.archlinux.org/index.php?search="
+youtube="https://www.youtube.com/results?search_query="
+protondb="https://www.protondb.com/search?q="
+flathub="https://flathub.org/apps/search?q="
+
+menu() {
+    printf "archwiki: \n"
+    printf "youtube:: \n"
+    printf "protondb: \n"
+    printf "flathub:: \n"
+}
+
+keyword=$(menu | dmenu -p "Search")
+
+e="${keyword:0:10}"
+
+q=${keyword#$e}
+
+case $e in
+	"archwiki: ") $BROWSER "$archwiki$q" ;;
+	"youtube:: ") $BROWSER "$youtube$q" ;;
+	"protondb: ") $BROWSER "$protondb$q" ;;
+	"flathub:: ") $BROWSER "$flathub$q" ;;
+	"") ;;
+	*) $BROWSER "$brave$keyword"
+esac

@@ -1,0 +1,72 @@
+# "query:Unread Articles:unread = \"yes\""
+"query:favorite channels:tags # \"favorite\""
+"query:podcast videos:tags # \"podcast\""
+"query:chill videos:tags # \"chill\""
+"query:tech videos:tags # \"tech\""
+"query:gaming videos:tags # \"gaming\""
+"query:martial arts videos:tags # \"martialarts\""
+"query:workout videos:tags # \"workout\""
+"query:music videos:tags # \"music\""
+"query:spook videos:tags # \"spook\""
+
+# youtube/odysee
+https://www.youtube.com/feeds/videos.xml?channel_id=UCqYPhGiB9tkShZorfgcL2lA podcast # whativelearned
+https://www.youtube.com/feeds/videos.xml?channel_id=UClHVl2N3jPEbkNJVx-ItQIQ podcast # healthygamergg
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2D2CMWXMOVWx7giW1n3LIg podcast # andrew huberman
+https://www.youtube.com/feeds/videos.xml?channel_id=UCusb0SpT8elBJdbcEJS_l2A podcast # tale foundry
+https://odysee.com/$/rss/@Thoughty2:b podcast # thoughty2
+https://www.youtube.com/feeds/videos.xml?channel_id=UCg4vDcovXPJTcTcYxQ9iCrw podcast # wavywebsurf
+https://www.youtube.com/feeds/videos.xml?channel_id=UCKaoE6fyoUJOgcoqbyuK9LQ podcast # mr mythos
+
+
+https://www.youtube.com/feeds/videos.xml?channel_id=UCzkjgi_ssPh82uiro89uvNA chill # asu 
+https://www.youtube.com/feeds/videos.xml?channel_id=UC91VA257tsCfsdZAzFGkWrA chill # sorekara travel
+https://www.youtube.com/feeds/videos.xml?channel_id=UCpXwMqnXfJzazKS5fJ8nrVw chill # shiey
+
+
+https://odysee.com/$/rss/@ericnmurphy:9 tech # eric murphy
+https://odysee.com/$/rss/@Luke:7 tech # luke smith
+https://odysee.com/$/rss/@AlphaNerd:8 tech # mental outlaw
+https://odysee.com/$/rss/@BrodieRobertson:5 tech # brodie robertson
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8ENHE5xdFSwx71u3fDH5Xw tech # the primeagen
+https://www.youtube.com/feeds/videos.xml?channel_id=UC1yGcBvdPGxRIMT1yo_bKIQ tech # jake linux
+https://www.youtube.com/feeds/videos.xml?channel_id=UCy7FdWkDces3W5Yb6AQtfTQ tech # ben vallack keyboards
+https://www.youtube.com/feeds/videos.xml?channel_id=UC4NNPgQ9sOkBjw6GlkgCylg tech # ben vallack 
+https://www.youtube.com/feeds/videos.xml?channel_id=UCIXn-OKMRbJzI8iuR1xaH6A tech # nix tricks
+https://www.youtube.com/feeds/videos.xml?channel_id=UCTCDjn7rnejAvhOrhlVgZrw tech # elijah manor
+
+
+https://odysee.com/$/rss/@NeverKnowsBest:8 gaming # neverknowsbest
+https://www.youtube.com/feeds/videos.xml?channel_id=UCCK0_aNgcZI_PrJIUiqedHA gaming # purposeless rabbitholes
+https://www.youtube.com/feeds/videos.xml?channel_id=UCm6GSA5OROHcIBNkXkH53zQ gaming # tomatoanus
+https://www.youtube.com/feeds/videos.xml?channel_id=UCaifrB5IrvGNPJmPeVOcqBA gaming # kruggsmash
+https://www.youtube.com/feeds/videos.xml?channel_id=UCR9X2tT0_WVfuYO17vqstlA gaming # joshstrifeplays
+https://www.youtube.com/feeds/videos.xml?channel_id=UCRWyPm7MrfotIYF8A8MGV3g gaming # joshstrifehayes
+https://www.youtube.com/feeds/videos.xml?channel_id=UCYkEkdsIRPfaKZMlfVLvI9g gaming # jack sather
+https://www.youtube.com/feeds/videos.xml?channel_id=UCVWhVAZwCdQsPZL-mDLcxPQ gaming # whitelight
+https://www.youtube.com/feeds/videos.xml?channel_id=UCyhnYIvIKK_--PiJXCMKxQQ gaming # joseph anderson
+
+
+https://www.youtube.com/feeds/videos.xml?channel_id=UCGCZBBvu7ZnqHYHuScODbAQ martialarts # chewjitsu
+https://www.youtube.com/feeds/videos.xml?channel_id=UCexKjyhZ5EvBTWyg6U6e5Og martialarts # jordan teaches jiu jitsu
+https://www.youtube.com/feeds/videos.xml?channel_id=UCr7VU0Cnef4AhQk7Pe_9nTA martialarts # brandon mccaghren
+https://www.youtube.com/feeds/videos.xml?channel_id=UCZ1_aQv6fcdRcDDqs2XzA7w martialarts # ramsey dewey
+
+
+https://www.youtube.com/feeds/videos.xml?channel_id=UCoR7CHkMETs3ByOv74OAbFw workout # mpmd
+https://www.youtube.com/feeds/videos.xml?channel_id=UCMp-0bU-PA7BNNR-zIvEydA workout # noel deyzel
+https://www.youtube.com/feeds/videos.xml?channel_id=UCj209lI3ZOmOCkK8e3qFFNQ workout # ryan humiston
+
+
+https://www.youtube.com/feeds/videos.xml?channel_id=UCXgxNzAgZ1GExhTW4X1mUrg music # mark rebillet
+https://www.youtube.com/feeds/videos.xml?channel_id=UCu1AYRNUsGwNaNaRhby-OgA music # andy cizek
+https://www.youtube.com/feeds/videos.xml?channel_id=UCnkp4xDOwqqJD7sSM3xdUiQ music # adam neely
+https://www.youtube.com/feeds/videos.xml?channel_id=UCln9P4Qm3-EAY4aiEPmRwEA music # ado
+https://www.youtube.com/feeds/videos.xml?channel_id=UCBvzMahVvpAdfB-wyQRUvKw music # ouchi daisuki galileo gallilei
+
+
+
+https://www.youtube.com/feeds/videos.xml?channel_id=UCtPrkXdtCM5DACLufB9jbsA spook # mrballen
+https://www.youtube.com/feeds/videos.xml?channel_id=UCYKZObv8VH_Z2xXpftQXw3w spook # exploring caves
+https://www.youtube.com/feeds/videos.xml?channel_id=UCNXvmGafmrtJ7VPSqjRRbwg spook # scary interesting
+

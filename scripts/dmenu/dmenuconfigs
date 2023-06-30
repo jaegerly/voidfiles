@@ -1,0 +1,40 @@
+#!/bin/sh
+
+term=kitty
+editor=nvim
+
+menu(){
+    printf "bookmarks\n"
+    printf "kitty\n"
+    printf "configopener\n"
+    printf "browserstart\n"
+    printf "profile\n"
+    printf "newsboaturl\n"
+}
+
+choice="$(menu | dmenu -f -i -p "  configs" | cut -d' ' -f1)"
+
+case "$choice" in
+    bookmarks)
+        choice="$HOME/.local/bookmarks"
+        ;;
+    kitty)
+        choice="$HOME/.config/kitty/kitty.conf"
+        ;;
+    configopener)
+        choice="$HOME/.local/share/scripts/dmenu/dmenuconfigs"
+        ;;
+    browserstart)
+        choice="$HOME/.local/share/scripts/dmenu/dmenubrowser"
+        ;;
+    profile)
+        choice="$HOME/.profile"
+        ;;
+    nb)
+        choice="$HOME/.config/newsboat/urls"
+        ;;
+    *)
+        exit 1
+        ;;
+    esac
+$term $editor $choice

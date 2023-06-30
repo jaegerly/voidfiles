@@ -1,0 +1,5 @@
+#!/bin/dash
+# fuzzy_win launches the script from param in a centered window
+xdotool search --onlyvisible --classname launchmenu windowunmap \
+  || xdotool search --classname launchmenu windowmap \
+  || devour kitty --class launchmenu --title fzf -e $1

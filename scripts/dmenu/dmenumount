@@ -1,0 +1,9 @@
+#!/bin/sh
+
+pgrep -x dmenu && exit
+
+mountable=$(lsblk -lp | grep "part $" | awk '{print $1, "(" $4 ")"}')
+[ "$mountable" = "" ] && exit 1
+chosen=$(echo "$mountable" | dmenu -f -i -p "💿 what to mount tho" | awk '{print $1}')
+[ "$chosen" = "" ] && exit 1
+udisksctl mount -b $chosen && pgrep -x dunst && notify-send "$chosen mounted"

@@ -1,0 +1,38 @@
+#!/bin/sh
+
+menu(){
+    printf "lock\n"
+    printf "sleep\n"
+    printf "shutdown\n"
+    printf "reboot\n"
+    printf "exitx\n"
+}
+
+main(){
+    choice="$(menu | dmenu -f -i -p "󰚩 system")"
+
+    case "$choice" in
+        lock)
+            slock
+            ;;
+        sleep)
+            loginctl suspend
+            ;;
+        shutdown)
+            loginctl poweroff
+            ;;
+        reboot)
+            loginctl reboot
+            ;;
+        exitx)
+            pkill dwm
+            ;;
+        *)
+            exit 1
+            ;;
+    esac
+}
+
+main
+
+

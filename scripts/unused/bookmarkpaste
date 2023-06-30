@@ -1,0 +1,3 @@
+#!/bin/dash
+
+xdotool type $(grep -v '^#' ~/.local/bookmarks | rofi -dmenu -p type | cut -d'#' -f2)

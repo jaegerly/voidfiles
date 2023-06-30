@@ -1,0 +1,18 @@
+# color
+set colored-stats On
+set colored-completion-prefix On
+
+# completion settings
+set show-all-if-ambiguous on
+set completion-ignore-case on
+set completion-display-width 0
+set completion-query-items 1000
+
+# command history search
+#"\e[A": history-search-backward
+#"\e[B": history-search-forward
+
+
+# alt + s is sudo
+"\es": "\C-asudo \C-e"
+

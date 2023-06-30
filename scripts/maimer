@@ -1,0 +1,18 @@
+#!/bin/sh
+
+maimer() {
+    case $1 in
+        cropped)
+            maim -s | tee ~/disk2/pictures/screenshots/cropped-"$(date +"%d%m%Y-%T")".png | xclip -selection clipboard -t image/png && notify-send -t 1500 "cropped" && exit
+            ;;
+        window)
+            maim -i $(xdotool getactivewindow) | tee ~/disk2/pictures/screenshots/window-"$(date +"%d%m%Y-%T")".png | xclip -selection clipboard -t image/png && notify-send -t 1500 "screenshot"
+            ;;
+        *)
+            printf "invalid argument"
+            ;;
+    esac
+}
+maimer $1
+
+

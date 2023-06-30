@@ -1,0 +1,19 @@
+#!/bin/dash
+
+sites(){
+	printf "https://www.youtube.com\n"
+	printf "https://www.search.brave.com\n"
+	printf "https://www.youtube.com\n"
+	printf "https://www.youtube.com\n"
+	printf "https://www.youtube.com\n"
+	printf "https://www.youtube.com\n"
+}
+
+chosen=$(sites | tr " " "\n" | rofi -dmenu)
+
+if [ -n "$chosen" ]; then
+        $BROWSER $chosen
+elif [ -z "$chosen" ]; then
+  exit
+fi
+

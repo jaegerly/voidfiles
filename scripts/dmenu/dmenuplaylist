@@ -1,0 +1,10 @@
+#!/bin/sh
+PLAYLISTS=~/disk2/music/playlists
+
+main() {
+    cd $PLAYLISTS
+    mpv --no-video $(ls $PLAYLISTS | dmenu -f -i -p "🎶  playlist") &
+}
+
+pkill -f mpv || main
+

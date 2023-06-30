@@ -1,0 +1,14 @@
+#!/bin/sh
+bookmark=$(xclip -o -selection p)
+title=$(wget -qO- "$bookmark" | grep -o -P '(?<=<title>).*(?=</title>)')
+[ -z "$title" ] && notify-send "url title not found" 
+curl -s --head --request --fail "$bookmark" || notify-send "warning: url not valid" 
+
+if grep -qx "$bookmark" ~/.local/bookmarks; then
+	notify-send "'$bookmark' already in bookmarks"
+else
+            echo "$bookmark" >> ~/.local/bookmarks
+			notify-send "$bookmark added to bookmarks"  
+			echo "$title" >> ~/.local/bookmark_titles 
+			notify-send "$title added to bookmarks"
+fi

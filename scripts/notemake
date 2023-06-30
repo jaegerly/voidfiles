@@ -1,0 +1,9 @@
+#!/bin/sh
+
+cd "$(dirname "$HOME/disk2/notes/diary")"
+
+myTerm=kitty
+myEdit=nvim
+
+$myTerm -e sh -c "sleep 0.2 ; $myEdit ."
+

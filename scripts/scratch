@@ -1,0 +1,16 @@
+#!/bin/sh
+
+case "$1" in
+
+    scratchpad) 		
+        entry="kitty --class scpad --title scratchpad -o font_size=18" 		
+        ;;
+    music)
+        entry="kitty --class scpad --title music -o font_size=18 -e ncmpcpp"
+        ;;
+esac
+
+xdotool search --onlyvisible --name "$1" windowunmap \
+    || xdotool search --name "$1" windowmap \
+    || $entry &
+

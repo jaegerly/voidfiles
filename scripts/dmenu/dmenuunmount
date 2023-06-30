@@ -1,0 +1,8 @@
+#!/bin/bash
+
+exclusionregex="\(/boot\|/efi\|/home\|/\)$"
+drives=$(lsblk -lp | grep "t /" | grep -v "$exclusionregex" | awk '{print $1, "(" $4 ")", "on", $7}')
+[ "$drives" = "" ] && exit
+chosen=$(echo "$drives" | dmenu -f -i -p "🌜wat unmount tho" | awk '{print $1}')
+[ "$chosen" = "" ] && exit
+udisksctl unmount -b $chosen && pgrep -x dunst && notify-send "$chosen unmounted"

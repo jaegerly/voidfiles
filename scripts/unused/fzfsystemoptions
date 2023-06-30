@@ -1,0 +1,38 @@
+#!/bin/dash
+
+menu(){
+    printf "lock\n"
+    printf "sleep\n"
+    printf "shutdown\n"
+    printf "reboot\n"
+    printf "exitx\n"
+}
+
+main(){
+    choice="$(menu | fzf --border=rounded --margin=1% --color=dark --color='pointer:12,bg+:8' --height 100% --reverse --no-scrollbar --header='system options ' --info=hidden --header-first --prompt "󰚩 ")"
+
+    case "$choice" in
+        lock)
+            betterlockscreen -l blur
+            ;;
+        sleep)
+            systemctl suspend
+            ;;
+        shutdown)
+            shutdown now
+            ;;
+        reboot)
+            reboot
+            ;;
+        exitx)
+            loginctl terminate-session ${XDG_SESSION_ID-}
+            ;;
+        *)
+            exit 1
+            ;;
+    esac
+}
+
+main
+
+

@@ -1,0 +1,44 @@
+#!/bin/sh
+
+menu(){
+    printf "yt      youtube\n"
+    printf "bs      brave search\n"
+    printf "nf      netflix\n"
+    printf "pm      protonmail\n"
+    printf "gm      gmail\n"
+    printf "or      moonlander zsa oryx\n"
+    printf "gi      github\n"
+}
+
+choice="$(menu | dmenu -f -i -p " browser" | cut -d' ' -f1)"
+
+case "$choice" in
+    yt)
+        choice="https://www.youtube.com"
+        ;;
+    bs)
+        choice='https://search.brave.com/'
+        ;;
+    nf)
+        choice='https://www.netflix.com/browse'
+        ;;
+    pm)
+        choice='https://mail.proton.me/u/2/inbox'
+        ;;
+    gm)
+        choice='https://mail.google.com/mail/u/0/#inbox'
+        ;;
+    or)
+        choice='https://configure.zsa.io/moonlander/layouts/0pLP4/latest/0'
+        ;;
+    gi)
+        choice='https://github.com/'
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+$BROWSER "$choice"
+
+
+

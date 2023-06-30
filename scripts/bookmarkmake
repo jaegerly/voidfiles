@@ -1,0 +1,13 @@
+#!/bin/sh
+
+bookmark="$(xclip -o)"
+file="$HOME/.local/bookmarks"
+
+if grep -q "^$bookmark$" "$file"; then
+    notify-send "already bookmarked"
+else
+    notify-send "bookmark added" "$bookmark"
+    echo "$bookmark" >> "$file"
+    kitty --class scpad --title popup -e nvim "$file"
+fi
+

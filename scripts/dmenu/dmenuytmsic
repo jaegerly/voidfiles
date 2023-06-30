@@ -1,0 +1,57 @@
+#!/bin/sh
+
+
+menu(){
+	printf "1.  Chill    Worldbuilding\n"
+	printf "2.  Chill    Black Hill\n"
+	printf "3.  Chill    Sunsets\n"
+	printf "4.  Chill    Lofi Final Fantasy\n"
+	printf "5.  Chill    Nujabes\n"
+	printf "6.  Chill    Jazz Ghibli\n"
+	printf "7.  Chill    Death Note\n"
+	printf "8.  Fast     TTNG\n"
+	printf "9.  Fast     Future Bass\n"
+	printf "10. Fast     Jungle Gaming\n"
+}
+
+main() {
+	choice=$(menu | dmenu -f -i -p playlist | cut -d. -f1)
+
+	case $choice in
+		1) # World building
+            URL="https://www.youtube.com/watch?v=g0QthhqAeCc"
+			;;
+		2) # Black hill
+            URL="https://www.youtube.com/watch?v=oLssDSxPeZM"
+			;;
+		3) # Sunsets
+            URL="https://www.youtube.com/watch?v=8F_X-hIhTQs"
+			;;
+		4) # lofiff
+            URL="https://www.youtube.com/watch?v=SDOOYVZJWQU"
+			;;
+		5) # nujabes
+            URL="https://www.youtube.com/watch?v=4-AFr1MPnCw"
+			;;
+		6) # ghibli
+            URL="https://www.youtube.com/watch?v=3jWRrafhO7M"
+			;;
+		7) # dn
+            URL="https://www.youtube.com/watch?v=QI68giYtnXs&"
+			;;
+		8) # ttng
+            URL="https://www.youtube.com/watch?v=DOHGTJoh498"
+			;;
+		9) # futureb
+            URL="https://www.youtube.com/watch?v=SoBAQgl0zbo"
+			;;
+		10) # jungleg
+            URL="https://www.youtube.com/watch?v=twBcMibg1Vs"
+			;;
+	esac
+    mpv --no-video $URL
+}
+
+pkill -f mpv || main
+
+

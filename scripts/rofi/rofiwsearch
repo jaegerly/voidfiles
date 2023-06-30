@@ -1,0 +1,38 @@
+#!/bin/sh 
+
+menu(){
+    printf "bs      bravesearch\n"
+    printf "fh      flathub\n"
+    printf "pdb     protondb\n"
+    printf "yt      youtube\n"
+}
+
+choice="$(menu | rofi -matching fuzzy -dmenu -i -p "  engine" | cut -d' ' -f1)"
+q="$(rofi -dmenu -p "search wat ever u want m8")"
+
+case "$choice" in
+    bs)
+        choice="https://search.brave.com/search?q=$q&source=web"
+        ;;
+    fh)
+        choice="https://flathub.org/apps/search?q=$q"
+        ;;
+    pdb)
+        choice="https://www.protondb.com/search?q=$q"
+        ;;
+    yt)
+        choice="https://www.youtube.com/results?search_query=$q"
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+
+if [ "$q" ]
+then
+    $BROWSER "$choice"
+else
+    exit 1
+fi
+
+

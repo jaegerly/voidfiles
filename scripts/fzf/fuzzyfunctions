@@ -1,0 +1,28 @@
+#!/bin/sh
+
+################
+function main(){
+  cmd="$(grep '^function' "$0" |grep -v "function main" |awk '{print $2}'|cut -d\( -f1 | fzf --border=rounded --margin=1% --color=dark --color='pointer:12,bg+:8' --height 100% --reverse --no-scrollbar --header='choose function ' --info=inline-right --header-first --prompt " ")"
+  $cmd
+  exit 0
+}
+################
+
+
+function brave(){
+  exec brave
+  exit
+}
+
+function fif() {
+  if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+  rg --files-with-matches --no-messages "$1" | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' || rg --ignore-case --pretty --context 10 '$1' {}"
+}
+
+function fuzzyfile(){
+    xdg-open $(find -type f |  fzf --border=rounded --margin=1% --color=dark --color='pointer:12,bg+:8' --height 100% --reverse --no-scrollbar --header='find file ' --info=inline-right --header-first --prompt " ") ;clear ;
+ 
+}
+
+main
+

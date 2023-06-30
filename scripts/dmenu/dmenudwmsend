@@ -1,0 +1,50 @@
+#!/bin/sh
+
+menu(){
+    printf "1.  one\n"
+    printf "2.  two\n"
+    printf "3.  three\n"
+    printf "4.  four\n"
+    printf "5.  five\n"
+    printf "6.  six\n"
+    printf "7.  seven\n"
+    printf "8.  eight\n"
+    printf "9.  discord\n"
+}
+
+choice=$(menu | dmenu -f -i -p "🐦send" | cut -d. -f1)
+
+case $choice in
+    1)
+        dwmc tagex 0
+        ;;
+    2)
+        dwmc tagex 1
+        ;;
+    3)
+        dwmc tagex 2
+        ;;
+    4)
+        dwmc tagex 3
+        ;;
+    5)
+        dwmc tagex 4
+        ;;
+    6)
+        dwmc tagex 5
+        ;;
+    7)
+        dwmc tagex 6
+        ;;
+    8)
+        dwmc tagex 7
+        ;;
+    9)
+        dwmc tagex 8
+        ;;
+
+    esac
+
+
+
+

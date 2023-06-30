@@ -1,0 +1,38 @@
+#!/bin/dash
+
+menu(){
+	printf "yt:   youtube\n"
+	printf "bs:   brave search\n"
+	printf "nf:   netflix\n"
+	printf "pm:   protonmail\n"
+	printf "gm:   gmail\n"
+	printf "ml:   moonlander zsa oryx\n"
+}
+
+choice=$(menu | rofi -dmenu -i -p open | cut -d: -f1)
+
+	case $choice in
+		yt)
+			$BROWSER 'https://www.youtube.com'
+	;;
+		bs)
+			$BROWSER 'https://search.brave.com/'
+	;;
+		nf)
+			$BROWSER 'https://www.netflix.com/browse'
+	;;
+		pm)
+			$BROWSER 'https://mail.proton.me/u/2/inbox'
+	;;
+		gm)
+			$BROWSER 'https://mail.google.com/mail/u/0/#inbox'
+	;;
+		ml)
+			$BROWSER 'https://configure.zsa.io/moonlander/layouts/0pLP4/latest/0'
+	;;
+
+esac
+
+
+
+

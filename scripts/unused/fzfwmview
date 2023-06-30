@@ -1,0 +1,44 @@
+#!/bin/dash
+
+menu(){
+    printf "4. four\n"
+    printf "5. five\n"
+    printf "6. six\n"
+    printf "7. seven\n"
+    printf "8. eight\n"
+    printf "9. discord\n"
+    printf "10. steam\n"
+}
+
+choice=$(menu | fzf --tac --border=rounded --margin=1% --color=dark --color='pointer:12,bg+:8' --height 100% --reverse --no-scrollbar --header='wm view ' --info=hidden --header-first --prompt " " | cut -d. -f1)
+
+case $choice in
+    4)
+        dkcmd ws view 4
+        ;;
+    5)
+        dkcmd ws view 5
+        ;;
+    6)
+        dkcmd ws view 6
+        ;;
+    7)
+        dkcmd ws view 7
+        ;;
+    8)
+        dkcmd ws view 8
+        ;;
+    9)
+        dkcmd ws view 9
+        ;;
+    10)
+        dkcmd ws view 10
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+
+
+
+

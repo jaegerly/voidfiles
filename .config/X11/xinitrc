@@ -1,0 +1,36 @@
+#!/bin/dash
+
+xrandr --output DP-0 --mode 2560x1440 --rate 165 --primary --output HDMI-1 --mode 1920x1080 --rate 144 --left-of DP-0 --dpi 130
+
+setxkbmap no
+
+xset r rate 155 70 
+
+xset s off -dpms
+
+redshift -PO 3500
+
+dunst &
+
+unclutter -idle 2 &
+
+picom --no-fading-openclose --legacy-backends &
+
+~/.fehbg
+
+dbus-run-session pipewire &
+
+# MPD daemon start (if no other user instance exists)
+[ ! -s ~/.config/mpd/pid ] && mpd
+
+###########
+#dwmstuff
+###########
+
+# Statusbar loop
+while true; do
+   xsetroot -name "$( date +"%F %R" )"
+   sleep 1m    # Update time every minute
+done &
+
+exec dbus-run-session -- dwm

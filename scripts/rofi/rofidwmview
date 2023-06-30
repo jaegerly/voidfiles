@@ -1,0 +1,38 @@
+#!/bin/sh
+
+menu(){
+    printf "4. IV   four\n"
+    printf "5. V    five\n"
+    printf "6. VI   six\n"
+    printf "7. VII  seven\n"
+    printf "8. VIII eight\n"
+    printf "9. IV   nine\n"
+}
+
+choice=$(menu | dmenu -f -i -p "🐈view" | cut -d. -f1)
+
+case $choice in
+    4)
+        dwmc viewex 3
+        ;;
+    5)
+        dwmc viewex 4
+        ;;
+    6)
+        dwmc viewex 5
+        ;;
+    7)
+        dwmc viewex 6
+        ;;
+    8)
+        dwmc viewex 7
+        ;;
+    9)
+        dwmc viewex 8
+        ;;
+
+    esac
+
+
+
+

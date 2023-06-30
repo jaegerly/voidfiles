@@ -1,0 +1,14 @@
+#!/bin/bash
+engine=$1
+shift
+a="$*"
+q=${a// /+}
+
+case "$engine" in
+	bs) req="https://search.brave.com/search?q=$q&source=web";;
+	yt) req="https://www.youtube.com/results?search_query=$q";;
+	pdb) req="https://www.protondb.com/search?q=$q";;
+	*) $0 bs $engine $@; exit 0;;
+esac
+xdg-open "$req"
+

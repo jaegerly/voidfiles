@@ -1,0 +1,24 @@
+#!/bin/sh
+
+menu(){
+    printf "nf      netflix\n"
+    printf "yt      youtube\n"
+}
+
+choice="$(menu | dmenu -f -i -p " watchbrowser" | cut -d' ' -f1)"
+
+case "$choice" in
+    yt)
+        choice="https://www.youtube.com"
+        ;;
+    nf)
+        choice='https://www.netflix.com/browse'
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+flatpak run com.brave.Browser "$choice"
+
+
+

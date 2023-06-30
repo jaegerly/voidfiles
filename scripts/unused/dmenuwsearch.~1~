@@ -1,0 +1,19 @@
+#!/bin/bash
+
+brave="https://search.brave.com/search?q="
+archwiki="https://wiki.archlinux.org/index.php?search="
+youtube="https://www.youtube.com/results?search_query="
+protondb="https://www.protondb.com/search?q="
+flathub="https://flathub.org/apps/search?q="
+
+menu() {
+    printf "archwiki https://wiki.archlinux.org/index.php?search=\n"
+    printf "youtube okkkk hello\n"
+    printf "protondb ebeb \n"
+    printf "flathub eb \n"
+}
+
+keyword=$(menu | dmenu -D ' ' -p "Search")
+
+
+echo "$keyword"

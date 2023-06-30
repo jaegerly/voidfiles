@@ -1,0 +1,166 @@
+#!/bin/sh
+
+# fuzzy file open
+ff() { 
+    choice=$( \
+        find -type f \
+        |  fzf --preview "bat --color always --style=plain {1}" \
+        --bind=space:toggle-preview \
+        --preview-window '30%,right,border-left,<30(down,30%,border-top)' \
+        --border=rounded \
+        --margin=1% \
+        --color=dark \
+        --color='pointer:12,bg+:8' \
+        --height 100% \
+        --reverse \
+        --no-scrollbar \
+        --header='find file ' \
+        --info=inline-right \
+        --header-first \
+        --prompt " ") \
+
+        if [ $choice ]
+        then
+            nvim $choice
+        else
+            return 1
+        fi
+    }
+
+# fuzzy jump directory
+fj() { 
+    choice=$( \
+        find -type d \
+        | fzf --preview "exa --oneline --icons -a --group-directories-first {}" \
+        --bind=space:toggle-preview \
+        --preview-window '30%,right,border-left,<30(down,30%,border-top)' \
+        --border=rounded \
+        --margin=1% \
+        --color=dark \
+        --color='pointer:12,bg+:8' \
+        --height 100% \
+        --reverse \
+        --no-scrollbar \
+        --header='jump to ' \
+        --info=inline-right \
+        --header-first \
+        --prompt " ") \
+
+        if [ $choice ]
+        then
+            cd $choice; clear; ls
+        else
+            return 1
+        fi
+    }
+
+
+# ripgrep fzf
+fs() {
+    if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi
+    choice=$( \
+        rg --hidden \
+        --files-with-matches \
+        --no-messages "$1" \
+        | fzf --preview "highlight -O ansi -l {} 2> /dev/null | rg --colors 'match:bg:yellow' --ignore-case --pretty --context 10 '$1' \
+        || rg --ignore-case --pretty --context 10 '$1' {}" \
+        --preview-window '50%,right,border-left,<50(down,85%,border-top)' \
+        --no-scrollbar \
+        --margin=1% \
+        --color=dark \
+        --color='pointer:12,bg+:8' \
+        --header='ripgrep ' \
+        --info=inline-right \
+        --header-first \
+        --prompt "👌"
+    )
+
+    if [ $choice ]
+    then
+        nvim $choice
+    else
+        return 1
+    fi
+}
+
+
+# fuzzy jump directory of the selected file
+ffj() {
+    local file
+    local dir
+    file=$( \
+        find -type f \
+        | fzf +m -q "$1" \
+        --preview "bat --color always --style=plain {1}" \
+        --bind=space:toggle-preview \
+        --preview-window '30%,right,border-left,<30(down,30%,border-top)' \
+        --border=rounded \
+        --margin=1% \
+        --color=dark \
+        --color='pointer:12,bg+:8' \
+        --height 100% \
+        --reverse \
+        --no-scrollbar \
+        --header='jump to file ' \
+        --info=inline-right \
+        --header-first \
+        --prompt " ")\
+        && dir=$(dirname "$file") && cd "$dir"; clear; ls
+    }
+
+# fuzzy install
+finstall() {
+    choice=$( \
+        xbps-query -Rsl \
+        | awk '{ print $2 }' \
+        | xargs -n1 xbps-uhelper getpkgname \
+        | fzf \
+        -m \
+        --border=rounded \
+        --margin=1% \
+        --color=dark \
+        --color='pointer:12,bg+:8' \
+        --height 100% \
+        --reverse \
+        --no-scrollbar \
+        --header='fuzzy install ' \
+        --info=inline-right \
+        --header-first \
+        --prompt " ")
+
+    if [ $choice ]
+    then
+        sudo xbps-install -S $choice
+    else
+        return 1
+    fi
+}
+
+
+# fuzzy remove no -m only one opt
+fremove() {
+    choice=$( \
+        xbps-query -l \
+        | awk '{ print $2 }' \
+        | xargs -n1 xbps-uhelper getpkgname \
+        | fzf \
+        -q "$1" \
+        --border=rounded \
+        --margin=1% \
+        --color=dark \
+        --color='pointer:12,bg+:8' \
+        --height 100% \
+        --reverse \
+        --no-scrollbar \
+        --header='pac remove ' \
+        --info=inline-right \
+        --header-first \
+        --prompt " ")
+
+    if [ $choice ]
+    then
+        sudo xbps-remove -OoR $choice
+    else
+        return 1
+    fi
+}

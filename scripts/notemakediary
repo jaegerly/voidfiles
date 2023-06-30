@@ -1,0 +1,18 @@
+#!/bin/sh
+
+cd "$(dirname "$0")"
+
+noteFilename="$HOME/disk2/notes/diary/note-$(date +%d-%m-%Y).md"
+
+if [ ! -f $noteFilename ]; then
+    echo "# Notes for $(date +%d-%m-%Y)" > $noteFilename
+fi
+
+kitty -e nvim -c "norm Go" \
+     -c "norm Go## $(date +%H:%M)" \
+     -c "norm G2o" \
+     -c "norm zz" \
+     -c "startinsert" $noteFilename
+
+
+

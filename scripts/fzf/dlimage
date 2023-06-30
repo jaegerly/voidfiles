@@ -1,0 +1,11 @@
+#!/bin/sh
+image=$(xclip -o -selection clipboard)
+dir=$(printf "wallpapers\\npictures\\ndownloads" | fzf --border=rounded --margin=1% --color=dark --color='pointer:12,bg+:8' --height 100% --reverse --no-scrollbar --header='download image ' --info=hidden --header-first --prompt " ")
+case "$dir" in
+    wallpapers) wget --directory-prefix ~/disk2/pictures/wallpapers "$image";;
+    pictures) wget --directory-prefix ~/disk2/pictures/ "$image";;
+    downloads) wget --directory-prefix ~/Downloads "$image";;
+    *) exit 1
+        ;;
+esac
+notify-send "saved to $dir"

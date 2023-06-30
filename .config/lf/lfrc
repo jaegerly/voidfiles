@@ -1,0 +1,261 @@
+set previewer ~/.config/lf/lf_kitty_preview
+set cleaner ~/.config/lf/lf_kitty_clean
+
+# Basic Settings
+set shell bash
+set hidden true
+set ignorecase true
+set icons true
+set promptfmt "\033[34;1m%d\033[0m\033[1m%f\033[0m"
+# set drawbox true
+set preview true
+set cursorpreviewfmt "\033[7;90m"
+
+${{
+    w=$(tput cols)
+    if [ $w -le 80 ]; then
+        lf -remote "send $id set ratios 1:2"
+    elif [ $w -le 160 ]; then
+        lf -remote "send $id set ratios 1:2:3"
+    else
+        lf -remote "send $id set ratios 1:2:3:5"
+    fi
+}}
+
+
+
+
+# unbinds
+map e
+map "'"
+map d
+map m
+map c
+map h
+map f
+map r
+
+
+# Custom Functions
+cmd mkdir ${{
+  printf "Directory Name: "
+  read ans
+  mkdir $ans
+}}
+
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+
+cmd chmod ${{
+  printf "x $f ?: "
+  read ans
+
+  for file in "$fx"
+  do
+   chmod +$ans $file
+  done
+
+  lf -remote 'send reload'
+}}
+
+
+#cmd open ${{
+#    case $(file --mime-type "$(readlink -f $f)" -b) in
+#	image/*) setsid -f feh -g 1920x1080 --scale-down "$f"  ;;
+#	audio/*|vide/x-ms-asf) mpv --no-video "$f" ;;
+#        *) setsid -f xdg-open "$f" ;;
+#    esac
+#}}
+
+
+cmd open ${{
+    case $(file --mime-type "$(readlink -f $f)" -b) in
+	application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) localc $fx ;;
+	image/vnd.djvu|application/pdf|application/octet-stream|application/postscript) setsid -f zathura $fx >/dev/null 2>&1 ;;
+        text/*|application/json|inode/x-empty|application/x-subrip) $EDITOR $fx;;
+	image/x-xcf) setsid -f gimp $f >/dev/null 2>&1 ;;
+	image/svg+xml) display -- $f ;;
+	image/*) setsid -f feh -g 1920x1080 --scale-down "$f" ;;
+	audio/*|video/x-ms-asf) mpv --audio-display=no "$f" ;;
+	video/*) setsid -f mpv "$f" -quiet >/dev/null 2>&1 ;;
+	application/pdf|application/vnd.djvu|application/epub*) setsid -f zathura $fx >/dev/null 2>&1 ;;
+	application/pgp-encrypted) $EDITOR $fx ;;
+	application/vnd.openxmlformats-officedocument.wordprocessingml.document|application/vnd.oasis.opendocument.text|application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/octet-stream|application/vnd.oasis.opendocument.spreadsheet|application/vnd.oasis.opendocument.spreadsheet-template|application/vnd.openxmlformats-officedocument.presentationml.presentation|application/vnd.oasis.opendocument.presentation-template|application/vnd.oasis.opendocument.presentation|application/vnd.ms-powerpoint|application/vnd.oasis.opendocument.graphics|application/vnd.oasis.opendocument.graphics-template|application/vnd.oasis.opendocument.formula|application/vnd.oasis.opendocument.database) setsid -f libreoffice $fx >/dev/null 2>&1 ;;
+        *) setsid -f xdg-open "$f" ;;
+    esac
+}}
+
+
+
+
+
+####
+
+
+cmd bulkrename ${{
+    tmpfile_old="$(mktemp)"
+    tmpfile_new="$(mktemp)"
+
+    [ -n "$fs" ] && fs=$(basename -a $fs) || fs=$(ls)
+
+    echo "$fs" > "$tmpfile_old"
+    echo "$fs" > "$tmpfile_new"
+    $EDITOR "$tmpfile_new"
+
+    [ "$(wc -l < "$tmpfile_old")" -eq "$(wc -l < "$tmpfile_new")" ] || { rm -f "$tmpfile_old" "$tmpfile_new"; exit 1; }
+
+    paste "$tmpfile_old" "$tmpfile_new" | while IFS="$(printf '\t')" read -r src dst
+    do
+        [ "$src" = "$dst" ] || [ -e "$dst" ] || mv -- "$src" "$dst"
+    done
+
+    rm -f "$tmpfile_old" "$tmpfile_new"
+    lf -remote "send $id unselect"
+}}
+
+
+
+
+cmd copyto ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	clear; echo "Copy to where?"
+	dest="$(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf | sed 's|~|$HOME|')" &&
+	for x in $fx; do
+		eval cp -ivr \"$x\" \"$dest\"
+	done &&
+	notify-send "📋 File(s) copied." "File(s) copies to $dest."
+}}
+
+cmd moveto ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	clear; echo "Move to where?"
+	dest="$(sed -e 's/\s*#.*//' -e '/^$/d' -e 's/^\S*\s*//' ${XDG_CONFIG_HOME:-$HOME/.config}/shell/bm-dirs | fzf | sed 's|~|$HOME|')" &&
+	for x in $fx; do
+		eval mv -iv \"$x\" \"$dest\"
+	done &&
+	notify-send "🚚 File(s) moved." "File(s) moved to $dest."
+}}
+#####
+
+
+# fzf
+cmd fzf_jump ${{
+    res="$(find -type d \
+    | fzf --preview "exa --oneline --icons -a --group-directories-first {}" \
+    --bind=space:toggle-preview \
+    --preview-window '30%,right,border-left,<30(down,30%,border-top)' \
+    --border=rounded \
+    --margin=1% \
+    --color=dark \
+    --color='pointer:12,bg+:8' \
+    --height 100% \
+    --reverse \
+    --no-scrollbar \
+    --header='jump to ' \
+    --info=inline-right \
+    --header-first \
+    --prompt " ")"
+
+    if [ -n "$res" ]; then
+        if [ -d "$res" ]; then
+            cmd="cd"
+        else
+            cmd="select"
+        fi
+        res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+        lf -remote "send $id $cmd \"$res\""
+    fi
+}}
+
+cmd fzf_file ${{
+    res="$(find -type f \
+        |  fzf --preview "bat --color always --style=plain {1}" \
+        --bind=space:toggle-preview \
+        --preview-window '30%,right,border-left,<30(down,30%,border-top)' \
+        --border=rounded \
+        --margin=1% \
+        --color=dark \
+        --color='pointer:12,bg+:8' \
+        --height 100% \
+        --reverse \
+        --no-scrollbar \
+        --header='find file ' \
+        --info=inline-right \
+        --header-first \
+        --prompt " ")"
+
+[ -n "$res" ] && lf -remote "send $id select \"$res\""
+}}
+
+# Archive bindings
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+# Trash bindings
+cmd trash ${{
+  files=$(printf "$fx" | tr '\n' ';')
+  while [ "$files" ]; do
+    file=${files%%;*}
+
+    trash-put "$(basename "$file")"
+    if [ "$files" = "$file" ]; then
+      files=''
+    else
+      files="${files#*;}"
+    fi
+  done
+}}
+
+cmd restore_trash ${{
+  trash-restore
+}}
+
+# Bindings
+map au unarchive
+
+# Basic Functions
+map . set hidden!
+map dd trash
+map dr restore_trash
+map p paste
+map x cut
+map y copy
+map <enter> open
+map R reload
+map mf mkfile
+map md mkdir
+map C clear
+map ch chmod
+map rr rename
+map fj fzf_jump
+map ff fzf_file
+map rb bulkrename
+map cc copyto
+map mv moveto
+
+
+
+# Movement
+map gD cd ~/disk2/documents
+map gd cd ~/Downloads
+map gp cd ~/disk2/pictures
+map gmm cd ~/disk2/music
+map gmt cd ~/mnt/
+map gc cd ~/.config
+map gr cd ~/repos
+map gv cd ~/disk2/videos
+map gs cd ~/.local/share/scripts
+map gt cd ~/.local/share/Trash/files
+map gn cd ~/disk2/notes

@@ -1,0 +1,54 @@
+#!/bin/sh
+
+menu(){
+    printf "1. one\n"
+    printf "2. two\n"
+    printf "3. three\n"
+    printf "4. four\n"
+    printf "5. five\n"
+    printf "6. six\n"
+    printf "7. seven\n"
+    printf "8. eight\n"
+    printf "9. discord\n"
+    printf "10. steam\n"
+}
+
+choice=$(menu | rofi -matching fuzzy -dmenu -i -p "🐕follow" -selected-row 1 | cut -d. -f1)
+
+case $choice in
+    1)
+        dkcmd ws follow 1
+        ;;
+    2)
+        dkcmd ws follow 2
+        ;;
+    3)
+        dkcmd ws follow 3
+        ;;
+    4)
+        dkcmd ws follow 4
+        ;;
+    5)
+        dkcmd ws follow 5
+        ;;
+    6)
+        dkcmd ws follow 6
+        ;;
+    7)
+        dkcmd ws follow 7
+        ;;
+    8)
+        dkcmd ws follow 8
+        ;;
+    9)
+        dkcmd ws follow 9
+        ;;
+    10)
+        dkcmd ws follow 10
+        ;;
+
+    esac
+
+
+
+

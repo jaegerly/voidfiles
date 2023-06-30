@@ -1,0 +1,14 @@
+#!/bin/sh
+
+bookmarks(){ 
+			if [ -s ~/.local/bookmark_titles ]; then 
+				entry=$(dmenu < ~/.local/bookmark_titles) 
+				[ -n "$entry" ] || exit 
+				idx=$(grep -nx "$entry" ~/.local/bookmark_titles)
+				[ -n "$idx" ] && link=$(sed "${idx%%:*}"'!d' ~/.local/bookmarks) && break || link="$entry" ; break
+			else 
+				exit 1
+			fi
+        }
+
+echo $idx

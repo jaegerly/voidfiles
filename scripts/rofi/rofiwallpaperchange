@@ -1,0 +1,6 @@
+#!/bin/sh
+
+wallpaper1=$(ls ~/disk2/pictures/wallpapers | rofi -matching fuzzy -dmenu -i -p "wallpaper 1");
+wallpaper2=$(ls ~/disk2/pictures/wallpapers | rofi -matching fuzzy -dmenu -i -p "wallpaper 2");
+
+[ $wallpaper1 -z ] || feh --bg-fill /home/jgr/disk2/pictures/wallpapers/$wallpaper1 /home/jgr/disk2/pictures/wallpapers/$wallpaper2
