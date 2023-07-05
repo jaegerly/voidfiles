@@ -9,7 +9,7 @@ menu(){
     printf "6.  six\n"
     printf "7.  seven\n"
     printf "8.  eight\n"
-    printf "9.  discord\n"
+    printf "9.  nine\n"
 }
 
 choice=$(menu | dmenu -f -i -p "🐦send" | cut -d. -f1)

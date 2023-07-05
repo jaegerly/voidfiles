@@ -3,10 +3,10 @@
 case "$1" in
 
     scratchpad) 		
-        entry="kitty --class scpad --title scratchpad -o font_size=18" 		
+        entry="alacritty --class scpad --title scratchpad -o font_size=18" 		
         ;;
     music)
-        entry="kitty --class scpad --title music -o font_size=18 -e ncmpcpp"
+        entry="alacritty --class scpad --title music -o font_size=18 -e ncmpcpp"
         ;;
 esac
 

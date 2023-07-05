@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>bb", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>bb", vim.cmd.Ex)
 
 -- move updown with shift
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -37,6 +37,11 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- spc x to chmod
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- splits
+vim.keymap.set("n", "<leader>ss", ":split<CR><C-w>w", { silent = true })
+vim.keymap.set("n", "<leader>sv", ":vsplit<CR><C-w>w", { silent = true })
+vim.keymap.set("n", "<leader><escape>", "<C-w>w")
 
 -- idk
 vim.keymap.set("n", "Q", "<nop>")

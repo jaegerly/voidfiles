@@ -59,15 +59,10 @@ return require("packer").startup(function(use)
 	use("windwp/nvim-autopairs")
 	use("windwp/nvim-ts-autotag")
 
-	--markdown specific
-	-- install without yarn or npm
-	use({
-		"iamcco/markdown-preview.nvim",
-		run = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-	})
+	-- oil filemanagement
+	use("stevearc/oil.nvim")
 
+	--markdown specific
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && npm install",

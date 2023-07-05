@@ -1,80 +1,40 @@
 #!/bin/sh
 
-term=kitty
+term=alacritty
 editor=nvim
 
 menu(){
-    printf "bm      bookmarks\n"
-    printf "sxd     sxhkdrc dk\n"
-    printf "sxb     sxhkdrc bsp\n"
-    printf "dk      dkrc\n"
-    printf "bs      bspwmrc\n"
-    printf "as      autostart\n"
-    printf "kt      kitty\n"
-    printf "zs      zshrc\n"
-    printf "br      bashrc\n"
-    printf "lf      lfrc\n"
-    printf "cf      configopener\n"
-    printf "al      alias\n"
-    printf "bs      browserstart\n"
-    printf "zp      zprofile\n"
-    printf "bp      bashprofile\n"
-    printf "nb      newsboaturl\n"
+    printf "bookmarks\n"
+    printf "sxhkdrc\n"
+    printf "bspwmrc\n"
+    printf "browserstart\n"
+    printf "newsboaturl\n"
+    printf "rofconfigs\n"
 }
 
-choice="$(menu | rofi -matching fuzzy -dmenu -i -p "  configs" | cut -d' ' -f1)"
+choice="$(menu | rofi -matching fuzzy -dmenu -i -p "  configs")"
 
 case "$choice" in
-    bm)
+    bookmarks)
         choice="$HOME/.local/bookmarks"
         ;;
-    sxd)
-        choice="$HOME/.config/dk/sxhkdrc"
-        ;;
-    sxb)
+    sxhkdrc)
         choice="$HOME/.config/bspwm/sxhkdrc"
         ;;
-    dk)
-        choice="$HOME/.config/dk/dkrc"
-        ;;
-    bs)
+    bspwmrc)
         choice="$HOME/.config/bspwm/bspwmrc"
-        ;;
-    as)
-        choice="$HOME/.local/bin/scripts/autostart"
-        ;;
-    kt)
-        choice="$HOME/.config/kitty/kitty.conf"
-        ;;
-    zs)
-        choice="$HOME/.zshrc"
-        ;;
-    br)
-        choice="$HOME/.bashrc"
-        ;;
-    lf)
-        choice="$HOME/.config/lf/lfrc"
-        ;;
-    cf)
-        choice="$HOME/.local/bin/scripts/roficonfigs"
-        ;;
-    al)
-        choice="$HOME/.config/shell/alias"
         ;;
     bs)
         choice="$HOME/.local/bin/scripts/rofibrowserstart"
         ;;
-    zp)
-        choice="$HOME/.config/shell/profile"
-        ;;
-    bp)
-        choice="$HOME/.bash_profile"
-        ;;
     nb)
         choice="$HOME/.config/newsboat/urls"
+        ;;
+    roficonfigs)
+        choice="$HOME/.local/bin/scripts/roficonfigs"
         ;;
     *)
         exit 1
         ;;
     esac
-$term $editor $choice
+$term -e $editor $choice

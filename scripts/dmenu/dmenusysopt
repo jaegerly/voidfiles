@@ -25,7 +25,7 @@ main(){
             loginctl reboot
             ;;
         exitx)
-            pkill dwm
+            loginctl kill-session
             ;;
         *)
             exit 1

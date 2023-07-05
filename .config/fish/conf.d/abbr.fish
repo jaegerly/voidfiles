@@ -7,8 +7,7 @@ if status is-interactive
     abbr xq xbps-query
     #programs
     abbr cat bat
-    abbr locate plocate
-    abbr e nvim 
+    abbr e nvim .
     abbr v nvim 
     abbr nb newsboat 
     abbr nbu newsboat -x reload 

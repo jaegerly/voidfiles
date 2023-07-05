@@ -3,16 +3,16 @@
 volset () {
     case $1 in
     "max"|"100")
-        pactl set-sink-volume @DEFAULT_SINK@ 100%; sleep 0.5; notify-send -t 925 "$( pamixer --get-volume-human )"
+        pactl set-sink-volume @DEFAULT_SINK@ 100%; sleep 0.5; notify-send -t 1500 "$( pamixer --get-volume-human )"
         ;;
     "raise"|"+"|"up")
-        pactl set-sink-volume @DEFAULT_SINK@ +5%; sleep 0.5; notify-send -t 925 "$( pamixer --get-volume-human )"
+        pactl set-sink-volume @DEFAULT_SINK@ +5%; sleep 0.5; notify-send -t 1000 "$( pamixer --get-volume-human )"
         ;;
     "lower"|"-"|"down")
-        pactl set-sink-volume @DEFAULT_SINK@ -5%; sleep 0.5; notify-send -t 925 "$( pamixer --get-volume-human )"
+        pactl set-sink-volume @DEFAULT_SINK@ -5%; sleep 0.5; notify-send -t 1000 "$( pamixer --get-volume-human )"
         ;;
     "toggle"|"mute")
-        pactl set-sink-mute @DEFAULT_SINK@ toggle; sleep 0.5; notify-send -t 925 "$( pamixer --get-volume-human )"
+        pactl set-sink-mute @DEFAULT_SINK@ toggle; sleep 0.5; notify-send -t 1500 "$( pamixer --get-volume-human )"
         ;;
     *)
         printf "invalid argument"

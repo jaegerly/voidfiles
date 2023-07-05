@@ -1,27 +1,31 @@
 #!/bin/sh 
 
 menu(){
-    printf "bs      bravesearch\n"
-    printf "fh      flathub\n"
-    printf "pdb     protondb\n"
-    printf "yt      youtube\n"
+    printf "brave search\n"
+    printf "flathub\n"
+    printf "protondb\n"
+    printf "youtube\n"
+    printf "archwiki\n"
 }
 
 choice="$(menu | rofi -matching fuzzy -dmenu -i -p "  engine" | cut -d' ' -f1)"
 q="$(rofi -dmenu -p "search wat ever u want m8")"
 
 case "$choice" in
-    bs)
+    brave)
         choice="https://search.brave.com/search?q=$q&source=web"
         ;;
-    fh)
+    flathub)
         choice="https://flathub.org/apps/search?q=$q"
         ;;
-    pdb)
+    protondb)
         choice="https://www.protondb.com/search?q=$q"
         ;;
-    yt)
+    youtube)
         choice="https://www.youtube.com/results?search_query=$q"
+        ;;
+    archwiki)
+        choice="https://wiki.archlinux.org/index.php?search=$q"
         ;;
     *)
         exit 1

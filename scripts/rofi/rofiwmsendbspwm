@@ -4,13 +4,10 @@ menu(){
     printf "1.  one\n"
     printf "2.  two\n"
     printf "3.  three\n"
-    printf "4.  four\n"
+    printf "4.  steam\n"
     printf "5.  five\n"
     printf "6.  six\n"
-    printf "7.  seven\n"
-    printf "8.  eight\n"
-    printf "9.  discord\n"
-    printf "10. chat/steam\n"
+    printf "7.  chat\n"
 }
 
 choice=$(menu | rofi -matching fuzzy -dmenu -i -p "🐦send" -selected-row 1 | cut -d. -f1)
@@ -36,15 +33,6 @@ case $choice in
         ;;
     7)
         bspc node -d ^7
-        ;;
-    8)
-        bspc node -d ^8
-        ;;
-    9)
-        bspc node -d ^9
-        ;;
-    10)
-        bspc node -d ^10
         ;;
 
     esac

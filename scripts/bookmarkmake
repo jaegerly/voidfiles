@@ -8,6 +8,6 @@ if grep -q "^$bookmark$" "$file"; then
 else
     notify-send "bookmark added" "$bookmark"
     echo "$bookmark" >> "$file"
-    kitty --class scpad --title popup -e nvim "$file"
+    alacritty --class scpad --title popup -e nvim "$file"
 fi
 

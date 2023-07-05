@@ -1,0 +1,19 @@
+
+# Tall layout config
+TALL_RATIO=0.5;
+
+# Wide layout config
+WIDE_RATIO=0.5;
+# Tall layout config
+RTALL_RATIO=0.5;
+
+# Wide layout config
+RWIDE_RATIO=0.5;
+
+
+GRID_RATIO=0.5;
+RGRID_RATIO=0.5;
+
+# Use desktop names(1) or ids(0)
+USE_NAMES=1;
+

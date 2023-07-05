@@ -1,12 +1,12 @@
 #!/bin/sh
 
 menu(){
-    printf "4. IV   four\n"
-    printf "5. V    five\n"
-    printf "6. VI   six\n"
-    printf "7. VII  seven\n"
-    printf "8. VIII eight\n"
-    printf "9. IV   nine\n"
+    printf "4. four\n"
+    printf "5. five\n"
+    printf "6. six\n"
+    printf "7. seven\n"
+    printf "8. eight\n"
+    printf "9. nine\n"
 }
 
 choice=$(menu | dmenu -f -i -p "🐈view" | cut -d. -f1)

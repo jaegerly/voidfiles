@@ -13,19 +13,19 @@ main(){
 
     case "$choice" in
         lock)
-            betterlockscreen -q -l blur
+            slock
             ;;
         sleep)
-            systemctl suspend
+            loginctl suspend
             ;;
         shutdown)
-            shutdown now
+            loginctl poweroff
             ;;
         reboot)
-            reboot
+            loginctl reboot
             ;;
         exitx)
-            loginctl terminate-session ${XDG_SESSION_ID-}
+            loginctl kill-session
             ;;
         *)
             exit 1

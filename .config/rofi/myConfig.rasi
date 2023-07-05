@@ -1,0 +1,14 @@
+configuration{
+    font:	    "JetBrainsMono Nerd Font 20";
+    modi:		"drun";
+    icon-theme: "breeze";
+    show-icons: true;
+    terminal: "alacritty";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "   programs ";
+}
+
+

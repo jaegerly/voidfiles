@@ -1,0 +1,289 @@
+# # # # # # # # 
+# jgr keybinds #
+# # # # # # # #
+
+
+# launcher
+#super + r
+#    rofi -show drun -display-drun " "
+super + r
+    rofi -show combi -modes-combi -combi-modes "window,drun,run" -display-combi "󱓞"
+
+# terminal
+super + Return
+    alacritty
+super + ctrl + alt + shift + 1
+    scratch scratchpad
+
+
+### scripz and programs ###
+# volume key
+XF86AudioRaiseVolume
+    volset up
+XF86AudioLowerVolume
+    volset down
+XF86AudioMute
+    volset mute
+super + alt + shift + F1
+    volset max
+
+# music control
+XF86AudioNext
+    mpc next
+XF86AudioPrev
+    mpc prev
+XF86AudioPlay
+    mpc toggle
+XF86AudioStop
+    mpc stop
+
+# browser
+super + ctrl + alt + shift + 2
+    rofibrowser
+
+# bookmark
+super + ctrl + alt + shift + 3
+    bookmarkmake
+super + ctrl + alt + shift + 4
+    rofibookmarkbrowser
+
+# screenshot
+Print
+     maimer cropped
+shift + Print
+    maimer window
+
+# systemopt
+super + ctrl + alt + shift + 5
+    rofisysopt
+
+# notemake
+super + ctrl + alt + shift + 6
+    notemake
+super + ctrl + alt + shift + 7
+    notemakediary
+
+# configs
+super + ctrl + alt + shift + 8
+    roficonfigs
+
+# music scratchpad
+super + ctrl + alt + shift + 9
+    scratch music
+
+# music  playlist
+super + ctrl + alt + shift + 0
+    rofiplaylist
+
+# rofi window management
+super + ctrl + alt + shift + F1
+    rofiwmviewbspwm
+super + ctrl + alt + shift + F2
+    rofiwmfollowbspwm
+super + ctrl + alt + shift + F3
+    rofiwmsendbspwm
+
+# rofi kill
+super + ctrl + alt + shift + F4
+    rofikill 
+
+# wallpaperchange
+super + ctrl + alt + shift + F5
+    rofiwallpaperchange 
+    
+# wsearch
+super + ctrl + alt + shift + F6
+    rofiwsearch 
+
+#############################################################################################
+#KEEEEEEEEEEEEEEEEYYCHORDS#####################
+################################################
+
+
+# left thumb
+# lefthand
+super + F1; super + F1
+    scratch scratchpad
+super + F1; v
+    alacritty
+super + F1; r
+        rofi -show combi -modes-combi -combi-modes "window,drun,run" -display-combi "󱓞"
+super + F1; q
+    bspc node -c
+super + F1; c
+    roficonfigs
+super + F1; f
+    rofibrowser
+super + F1; d
+    rofibookmarkbrowser
+super + F1; b
+    bookmarkmake
+super + F1; F11
+    rofisysopt
+super + F1; w
+    rofikill
+super + F1; s
+    rofiwsearch
+#righthand
+super + F1; i
+    bspc node -f north
+super + F1; j
+    bspc node -f west
+super + F1; k
+    bspc node -f south
+super + F1; l
+    bspc node -f east
+super + F1; u
+    bspc node -f prev.local.!hidden.window
+super + F1; m
+    bspc node -t \~fullscreen
+super + F1; p
+    bspc node -t \~floating
+super + F1; o
+    bsp-layout previous --layouts tall,wide,monocle
+
+# right thumb
+# lefthand
+super + F2; F11
+    rofiwallpaperchange
+# righthand
+super + F2; super + F2
+    timedate
+super + F2; j
+    bspc desktop -f 1
+super + F2; k
+    bspc desktop -f 2
+super + F2; l
+    bspc desktop -f 3
+super + F2; u
+    rofiwmviewbspwm
+super + F2; i
+    rofiwmfollowbspwm
+super + F2; o
+    rofiwmsendbspwm
+
+    
+
+#############################################
+#
+# bspwm hotkeys
+#
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+# quit/restart bspwm
+alt + ctrl + shift + {q,r}
+	bspc {quit,wm -r}
+
+# close and kill
+super + {_,shift + }q
+	bspc node -{c,k}
+
+# focus the node in the given direction
+super + {_,shift + }{Left,Down,Up,Right}
+    bspc node -{f,s} {west,south,north,east}
+
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+    bspc {desktop -f,node -d --follow} '^{1-9,10}'
+
+#fullscreen/float
+super + Next
+    bspc node -t \~fullscreen
+super + Prior
+    bspc node -t \~floating
+# swap the current node and the biggest window
+super + Home
+	bspc node -s last.window
+# end layouts
+super + End
+    bsp-layout previous --layouts tall,wide,monocle
+# focus the next/previous window in the current desktop
+super + {_,shift + }x
+	bspc node -f {next,prev}.local.!hidden.window
+
+
+#
+# move/resize
+
+# expand a window by moving one of its side outward
+super + ctrl + {Left,Down,Up,Right}
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + {Left,Down,Up,Right}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + alt + shift + {Left,Down,Up,Right}
+    bspc node -v {-20 0,0 20,0 -20,20 0}
+#
+# alternate between the tiled and monocle layout
+#super + m
+#	bspc desktop -l next
+
+# send the newest marked node to the newest preselected node
+#super + y
+#	bspc node newest.marked.local -n newest.!automatic.local
+
+
+#
+# state/flags
+#
+
+# set the window state
+#super + {t,shift + t,s,f}
+#	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# set the node flags
+#super + ctrl + {m,x,y,z}
+#	bspc node -g {marked,locked,sticky,private}
+
+#
+# focus/swap
+#
+
+
+# focus the node for the given path jump
+#super + {p,b,comma,period}
+#	bspc node -f @{parent,brother,first,second}
+
+
+# focus the next/previous desktop in the current monitor
+#super + bracket{left,right}
+#	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+# super + {grave,Tab}
+#	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+# super + {o,i}
+#	bspc wm -h off; \
+#	bspc node {older,newer} -f; \
+#	bspc wm -h on
+
+#####################################
+#
+# preselect
+#
+
+# preselect the direction
+# super + ctrl + {h,j,k,l}
+#	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+#super + ctrl + {1-9}
+#	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+#super + ctrl + space
+#	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+#super + ctrl + shift + space
+#	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+

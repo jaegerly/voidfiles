@@ -1,16 +1,13 @@
 #!/bin/sh
 
 menu(){
-    printf "4.  four\n"
+    printf "4.  steam\n"
     printf "5.  five\n"
     printf "6.  six\n"
-    printf "7.  seven\n"
-    printf "8.  eight\n"
-    printf "9.  discord\n"
-    printf "10. chat/steam\n"
+    printf "7.  chat\n"
 }
 
-choice=$(menu | rofi -matching fuzzy -dmenu -i -p "🐈view" -selected-row 6 | cut -d. -f1)
+choice=$(menu | rofi -matching fuzzy -dmenu -i -p "🐈view" | cut -d. -f1)
 
 case $choice in
     4)
@@ -24,15 +21,6 @@ case $choice in
         ;;
     7)
         bspc desktop -f ^7
-        ;;
-    8)
-        bspc desktop -f ^8
-        ;;
-    9)
-        bspc desktop -f ^9
-        ;;
-    10)
-        bspc desktop -f ^10
         ;;
 
     esac
