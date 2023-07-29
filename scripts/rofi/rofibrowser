@@ -4,10 +4,9 @@ menu(){
     printf "youtube\n"
     printf "brave search\n"
     printf "netflix\n"
-    printf "protonmail\n"
-    printf "gmail\n"
     printf "moonlander zsa oryx\n"
     printf "github\n"
+    printf "monkeytype\n"
 }
 
 choice="$(menu | rofi -matching fuzzy -dmenu -i -p " browser" | cut -d' ' -f1)"
@@ -22,17 +21,14 @@ case "$choice" in
     netflix)
         choice='https://www.netflix.com/browse'
         ;;
-    protonmail)
-        choice='https://mail.proton.me/u/2/inbox'
-        ;;
-    gmail)
-        choice='https://mail.google.com/mail/u/0/#inbox'
-        ;;
     moonlander)
         choice='https://configure.zsa.io/moonlander/layouts/0pLP4/latest/0'
         ;;
     github)
         choice='https://github.com/'
+        ;;
+    monkeytype)
+        choice='https://monkeytype.com/'
         ;;
     *)
         exit 1

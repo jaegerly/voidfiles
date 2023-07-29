@@ -1,6 +1,6 @@
 configuration{
-    font:	    "JetBrainsMono Nerd Font 20";
-    modi:		"drun";
+    modi:		"combi";
+    combi-modi:		"window,drun,run";
     icon-theme: "breeze";
     show-icons: true;
     terminal: "alacritty";
@@ -8,7 +8,7 @@ configuration{
     location: 0;
     disable-history: false;
     hide-scrollbar: true;
-    display-drun: "   programs ";
+    display-drun: " ";
 }
 
 

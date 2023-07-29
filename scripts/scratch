@@ -8,6 +8,12 @@ case "$1" in
     music)
         entry="alacritty --class scpad --title music -o font_size=18 -e ncmpcpp"
         ;;
+    tox)
+        entry="alacritty --class scpad --title tox -o font_size=18 -e toxic"
+        ;;
+    index)
+        entry="alacritty --class scpad --title index -o font_size=18 -e neorgindex"
+        ;;
 esac
 
 xdotool search --onlyvisible --name "$1" windowunmap \

@@ -4,7 +4,7 @@
 export PATH="$PATH:$HOME/.local/bin/"
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="kitty"
+export TERMINAL="alacritty"
 export BROWSER="firefox"
 export VIDEO="mpv"
 export AUDIO="mpv --no-video"

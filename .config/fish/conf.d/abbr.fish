@@ -12,6 +12,8 @@ if status is-interactive
     abbr nb newsboat 
     abbr nbu newsboat -x reload 
     abbr redshift redshift -PO
+    abbr pp nsxiv -r .
+    abbr p nsxiv
     #trash
     abbr tr trash
     abbr trr trash-restore

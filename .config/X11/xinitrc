@@ -16,23 +16,25 @@ unclutter -idle 2 &
 
 picom --no-fading-openclose --legacy-backends &
 
-~/.fehbg
+~/.fehbg &
+# feh --bg-fill --randomize ~/disk2/pictures/fav* --bg-fill --randomize ~/disk2/pictures/fav* &
 
 dbus-run-session pipewire &
 
-# MPD daemon start (if no other user instance exists)
-[ ! -s ~/.config/mpd/pid ] && mpd
+mpd &
+
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 ###########
 #dwmstuff
 ###########
 
-# Statusbar loop
-#while true; do
-#   xsetroot -name "$( date +"%F %R" )"
-#   sleep 1m    # Update time every minute
-#done &
+ Statusbar loop
+while true; do
+   xsetroot -name "$( date +"%a %d %b | %R" )"
+   sleep 1m    # Update time every minute
+done &
 
-sxhkd -c ~/.config/bspwm/sxhkdrc &
+#sxhkd -c ~/.config/bspwm/sxhkdrc &
 
-exec dbus-run-session -- bspwm
+exec dbus-run-session -- dwm

@@ -5,11 +5,9 @@ editor=nvim
 
 menu(){
     printf "bookmarks\n"
-    printf "sxhkdrc\n"
-    printf "bspwmrc\n"
     printf "browserstart\n"
     printf "newsboaturl\n"
-    printf "rofconfigs\n"
+    printf "roficonfigs\n"
 }
 
 choice="$(menu | rofi -matching fuzzy -dmenu -i -p "  configs")"
@@ -18,20 +16,14 @@ case "$choice" in
     bookmarks)
         choice="$HOME/.local/bookmarks"
         ;;
-    sxhkdrc)
-        choice="$HOME/.config/bspwm/sxhkdrc"
+    browserstart)
+        choice="$HOME/.local/share/scripts/rofi/rofibrowser"
         ;;
-    bspwmrc)
-        choice="$HOME/.config/bspwm/bspwmrc"
-        ;;
-    bs)
-        choice="$HOME/.local/bin/scripts/rofibrowserstart"
-        ;;
-    nb)
+    newsboaturl)
         choice="$HOME/.config/newsboat/urls"
         ;;
     roficonfigs)
-        choice="$HOME/.local/bin/scripts/roficonfigs"
+        choice="$HOME/.local/share/scripts/rofi/roficonfigs"
         ;;
     *)
         exit 1

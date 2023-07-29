@@ -12,6 +12,6 @@ if status is-interactive
     # rsync dots
     alias syncconfig="rsync -urvP --exclude 'libfm' --exclude 'pcmanfm' --exclude 'QtProject.conf' --exclude 'tox' --exclude 'pulse' --exclude 'menus' --exclude 'keepassxc' --exclude 'gtk-3.0' --exclude 'mpv/watch_later' ~/.config ~/repos/voidfiles"
     alias syncscripts="rsync -urvP ~/.local/share/scripts ~/repos/voidfiles"
-    alias syncdots="rsync -urvP ~/.bash_profile ~/.bashrc ~/repos/voidfiles"
+    alias syncdots="rsync -urvP ~/.profile ~/.bashrc ~/repos/voidfiles"
 end
 

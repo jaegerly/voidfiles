@@ -1,14 +1,14 @@
 * {
     bg-col:  #303446;
     bg-col-light: #303446;
-    border-col: #303446;
+    border-col: #8aadf4;
     selected-col: #303446;
     blue: #8caaee;
     fg-col: #c6d0f5;
     fg-col2: #e78284;
     grey: #737994;
     transp: #00000000;
-    font: "Mononoki Nerd Font Mono 18";
+    font: "JetBrainsMono Nerd Font Mono 18";
 }
 
 element-text, element-icon , mode-switcher {
@@ -22,7 +22,7 @@ window {
     height: 500;
     width: 800;
     location: southwest;
-    border: 3px;
+    border: 2px;
     border-radius: 1px;
     border-color: @border-col;
     background-color: @bg-col;
@@ -53,7 +53,7 @@ textbox-prompt-colon {
 }
 
 entry {
-    placeholder: " -> ";
+    placeholder: "  : ) ";
     blink: false;
     padding: 6px;
     margin: 20px 0px 0px 10px;

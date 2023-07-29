@@ -1,0 +1,33 @@
+#!/bin/sh
+
+menu(){
+    printf "1.  one\n"
+    printf "2.  two\n"
+    printf "3.  three\n"
+    printf "4.  four\n"
+    printf "5.  five\n"
+}
+
+choice=$(menu | rofi -matching fuzzy -dmenu -i -p "🐦send" | cut -d. -f1)
+
+case $choice in
+    1)
+        dwmc tagex 0
+        ;;
+    2)
+        dwmc tagex 1
+        ;;
+    3)
+        dwmc tagex 2
+        ;;
+    4)
+        dwmc tagex 3
+        ;;
+    5)
+        dwmc tagex 4
+        ;;
+    esac
+
+
+
+

@@ -1,0 +1,18 @@
+#!/bin/sh
+# The key combo argument has the following form: "[C-][M-][S-]KEY",
+while read file
+do
+    case "$1" in
+        "c") xclip -selection clipboard -target image/png "$file"; notify-send "copied $file";;
+        "m") cp $file ~/disk2/pictures/wallpapers/mwp; notify-send "$file mwp";;
+        "s") cp $file ~/disk2/pictures/wallpapers/swp; notify-send "$file swp";;
+        "w") feh --bg-fill $file;;
+        "r")
+		name="$(dmenu -p "rename $file to: ")" 2> /dev/null
+		if ! [ -z "$name" ]; then
+			mv "$file" "$(dirname $file)/$name"
+		fi
+		;;
+    esac
+done
+

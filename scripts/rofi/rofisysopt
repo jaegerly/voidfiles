@@ -25,7 +25,7 @@ main(){
             loginctl reboot
             ;;
         exitx)
-            loginctl kill-session
+            pkill -u jgrvoid
             ;;
         *)
             exit 1

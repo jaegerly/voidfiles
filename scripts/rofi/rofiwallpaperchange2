@@ -1,0 +1,31 @@
+#!/bin/sh
+
+menu(){
+    printf "green\n"
+    printf "white\n"
+    printf "blue\n"
+    printf "stardew\n"
+}
+
+choice=$(menu | rofi -matching fuzzy -dmenu -i -p " wallpaper" | cut -f1)
+
+case $choice in
+    green)
+        feh --bg-fill ~/disk2/pictures/wallpapers/mwp/ghibli02.png --bg-fill ~/disk2/pictures/wallpapers/swp/02.png
+        ;;
+    white)
+        feh --bg-fill ~/disk2/pictures/wallpapers/mwp/white1.jpg --bg-fill ~/disk2/pictures/wallpapers/swp/white1.png
+        ;;
+    blue)
+        feh --bg-fill ~/disk2/pictures/wallpapers/mwp/blue2.jpg --bg-fill ~/disk2/pictures/wallpapers/mwp/blue1.jpg
+        ;;
+    stardew)
+        feh --bg-fill ~/disk2/pictures/wallpapers/mwp/green2.jpg --bg-fill ~/disk2/pictures/wallpapers/swp/sw.png
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+
+
+
